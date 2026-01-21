@@ -1,0 +1,4 @@
+# ninja log v5
+0	2066	1768983769894904265	code/CMakeFiles/uav_tracker.dir/pnp.cpp.o	45bb94222a05f47d
+0	3801	1768983771625979124	code/CMakeFiles/uav_tracker.dir/main.cpp.o	2858ca0ebc36b04c
+3803	3901	1768983771725926071	code/uav_tracker	e0c36a65699662f3

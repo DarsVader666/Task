@@ -1,0 +1,5 @@
+/home/d1c/题目/build/CMakeFiles/rebuild_cache.dir
+/home/d1c/题目/build/CMakeFiles/edit_cache.dir
+/home/d1c/题目/build/code/CMakeFiles/rebuild_cache.dir
+/home/d1c/题目/build/code/CMakeFiles/edit_cache.dir
+/home/d1c/题目/build/code/CMakeFiles/uav_tracker.dir

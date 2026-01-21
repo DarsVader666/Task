@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/d1c/题目/code/pnp.cpp
+opencv4/opencv2/calib3d.hpp
+-
+opencv4/opencv2/core.hpp
+-
+iostream
+-
+vector
+-
+
