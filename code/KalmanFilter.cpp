@@ -36,7 +36,7 @@ void KalmanFilter::initTransitionMatrix()
 void KalmanFilter::initMeasurementMatrix() // 计算观测矩阵
 {                                          // H_k=[I_3,0,...,-q_{ln}(k)]
     measurementMatrix_ = cv::Mat::zeros(measureDim_, stateDim_, CV_64F);
-    
+
     for (int i = 0; i < 3; i++)
     {
         measurementMatrix_.at<double>(i, i) = 1.0;
@@ -82,4 +82,18 @@ void KalmanFilter::setProcessNoiseCov(const cv::Mat &Q)
 void KalmanFilter::setMeasurementNoiseCov(const cv::Mat &R)
 {
     R.copyTo(measurementNoiseCov_);
+}
+void KalmanFilter::updateMeassurementMatrix(const cv::Vec3d &q_ln)
+{
+    // 重新构造H矩阵[I,0,0, ... ,0,0,q_ln]
+    measurementMatrix_ = cv::Mat::zeros(3, 3 * (m_ + 1) + 1, CV_64F);
+
+    measurementMatrix_.at<double>(0, 0) = 1.0;
+    measurementMatrix_.at<double>(1, 1) = 1.0;
+    measurementMatrix_.at<double>(2, 2) = 1.0;
+
+    // 最后一列
+    measurementMatrix_.at<double>(0, 3 * (m_ + 1)) = -q_ln[0];
+    measurementMatrix_.at<double>(1, 3 * (m_ + 1)) = -q_ln[1];
+    measurementMatrix_.at<double>(2, 3 * (m_ + 1)) = -q_ln[2];
 }

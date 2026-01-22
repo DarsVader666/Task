@@ -13,6 +13,7 @@ public:
 
     void setProcessNoiseCov(const cv::Mat& Q);//过程噪声协方差矩阵
     void setMeasurementNoiseCov(const cv::Mat& R);
+    void updateMeassurementMatrix(const cv::Vec3d& q_ln);//动态更新H矩阵 
 
 private:
     int stateDim_;//状态参量维度
@@ -30,4 +31,5 @@ private:
 
     void initTransitionMatrix();
     void initMeasurementMatrix();
+    
 };
