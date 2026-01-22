@@ -53,7 +53,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "uav_tracker::@1c76e98fcac0e60aa45c",
-					"jsonFile" : "target-uav_tracker-Debug-28ccf043a6baf160b39b.json",
+					"jsonFile" : "target-uav_tracker-Debug-47a5c2b7846fd9958f71.json",
 					"name" : "uav_tracker",
 					"projectIndex" : 0
 				}
@@ -63,8 +63,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/d1c/题目/build",
-		"source" : "/home/d1c/题目"
+		"build" : "/home/d1c/Git/Task/build",
+		"source" : "/home/d1c/Git/Task"
 	},
 	"version" : 
 	{

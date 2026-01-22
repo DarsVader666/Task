@@ -1,4 +1,4 @@
-# Install script for directory: /home/d1c/题目
+# Install script for directory: /home/d1c/Git/Task
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/d1c/题目/build/code/cmake_install.cmake")
+  include("/home/d1c/Git/Task/build/code/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/d1c/题目/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/d1c/Git/Task/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/d1c/题目/build"
+			"value" : "/home/d1c/Git/Task/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/d1c/题目"
+			"value" : "/home/d1c/Git/Task"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1142,6 +1142,18 @@
 			"value" : "[/usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.7.3()]"
 		},
 		{
+			"name" : "OpenCV2_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for OpenCV2."
+				}
+			],
+			"type" : "PATH",
+			"value" : "OpenCV2_DIR-NOTFOUND"
+		},
+		{
 			"name" : "OpenCV_DIR",
 			"properties" : 
 			[
@@ -1163,7 +1175,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/d1c/题目/build/code"
+			"value" : "/home/d1c/Git/Task/build/code"
 		},
 		{
 			"name" : "UAV_Tracking_System_SOURCE_DIR",
@@ -1175,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/d1c/题目/code"
+			"value" : "/home/d1c/Git/Task/code"
 		},
 		{
 			"name" : "nlohmann_json_DIR",

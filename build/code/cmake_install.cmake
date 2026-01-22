@@ -1,4 +1,4 @@
-# Install script for directory: /home/d1c/题目/code
+# Install script for directory: /home/d1c/Git/Task/code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -19,13 +19,16 @@ find_package(Eigen3 REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 # 添加可执行文件 (假设你的文件名是 test.cpp)
-add_executable(uav_tracker main.cpp pnp.cpp)
+add_executable(uav_tracker  main.cpp PnPSolver.cpp DataReader.cpp KalmanFilter.cpp utils.cpp )
 
 # 链接库和头文件
-target_link_libraries(uav_tracker 
-    PRIVATE 
-    ${OpenCV_LIBS} 
+target_link_libraries(uav_tracker
+    PRIVATE
+    ${OpenCV_LIBS}
     Eigen3::Eigen
     nlohmann_json::nlohmann_json
 )
-target_include_directories(uav_tracker PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(uav_tracker PRIVATE
+    include
+    ${OpenCV_INCLUDE_DIRS}
+)
