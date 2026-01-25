@@ -9,10 +9,10 @@ void synchronizeData(
     double timestamp,
     const std::vector<StatusData>& statusData,
     const std::vector<PoseData>& cameraData,
-    //const std::vector<PoseData>& uavData,
+    const std::vector<PoseData>& uavData,
     StatusData& outStatus,
-    PoseData& outCamera
-    //PoseData& outUav
+    PoseData& outCamera,
+    PoseData& outUav
 );
 
 std::vector<cv::Point2f> getImagePoints(const StatusData& status);

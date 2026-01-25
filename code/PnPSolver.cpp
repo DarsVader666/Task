@@ -32,9 +32,8 @@ PnPSolver::EPnPResult PnPSolver::solveEPnP(
                                 rvec,
                                 result.translation,
                                 false,
-                                cv::SOLVEPNP_EPNP); // 把像素点求出旋转向量rvec和平移向量tvec
-    /*cv::Rodrigues(rvec, result.rotation); // 旋转向量转化为旋转矩阵
-    return result;*/
+                                cv::SOLVEPNP_IPPE); // 把像素点求出旋转向量rvec和平移向量tvec
+
     if (!success)
     {
         throw std::runtime_error("ePnP求解失败");
@@ -60,7 +59,7 @@ cv::Mat PnPSolver::quatToRotMat(const cv::Vec4d &q)
             2 * x * z - 2 * y * w, 2 * y * z + 2 * x * w, 1 - 2 * x * x - 2 * y * y);
 }
 
-cv::Vec3d PnPSolver::transformToWorld(
+cv::Vec3d PnPSolver::transformToWorld(//计算无人机的世界坐标
     const cv::Mat &R_target_cam,
     const cv::Vec3d &tvec,
     const PoseData &cameraPose)

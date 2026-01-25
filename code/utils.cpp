@@ -6,10 +6,10 @@ void synchronizeData(
     double timestamp,
     const std::vector<StatusData>& statusData,
     const std::vector<PoseData>& cameraData,
-    //const std::vector<PoseData>& uavData,
+    const std::vector<PoseData>& uavData,
     StatusData& outStatus,
-    PoseData& outCamera
-    //PoseData& outUav
+    PoseData& outCamera,
+    PoseData& outUav
 ) {
     // 查找最接近的状态数据
     auto statusIt = std::min_element(statusData.begin(), statusData.end(),
@@ -34,7 +34,7 @@ void synchronizeData(
     }
 
     // 查找最接近的无人机位姿数据
-    /*auto uavIt = std::min_element(uavData.begin(), uavData.end(),
+    auto uavIt = std::min_element(uavData.begin(), uavData.end(),
         [timestamp](const PoseData& a, const PoseData& b) {
             return std::abs(a.record_time - timestamp) < std::abs(b.record_time - timestamp);
         });
@@ -42,7 +42,7 @@ void synchronizeData(
         outUav = *uavIt;
     } else {
         throw std::runtime_error("No UAV pose data found for timestamp: " + std::to_string(timestamp));
-    }*/
+    }
 }
 
 // 获取图像点函数实现
@@ -73,3 +73,4 @@ std::vector<cv::Point2f> getImagePoints(const StatusData& status) {
     
     return points;
 }
+

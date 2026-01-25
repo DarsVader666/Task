@@ -42,4 +42,5 @@ class DataReader
 public:
     static std::vector<StatusData> readStatusFile(const std::string &filename);
     static std::vector<PoseData> readPoseFile(const std::string &filename);
+    static double getTime(StatusData);
 };
