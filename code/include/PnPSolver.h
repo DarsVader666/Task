@@ -9,9 +9,16 @@ public:
     {
         cv::Vec3d translation; // 位移向量
         cv::Mat rotation;      // 旋转矩阵
+        double reprojectionError; // <--- 新增：重投影误差 (像素单位)
     };
 
     static EPnPResult solveEPnP(
+        const std::vector<cv::Point3f> &objectPoints,
+        const std::vector<cv::Point2f> &imagePoints,
+        const cv::Mat &cameraMatrix,
+        const cv::Mat &disCoeffs);
+
+    static EPnPResult solveWithScore(
         const std::vector<cv::Point3f> &objectPoints,
         const std::vector<cv::Point2f> &imagePoints,
         const cv::Mat &cameraMatrix,
