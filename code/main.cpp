@@ -31,7 +31,7 @@ int main()
 
     // 计算焦距
     // double fx = imageWidth / (2.0 * tan(horizontalFOV / 2.0));
-    double fx = 1275.0;
+    double fx = 815.0;
     double fy = fx;
 
     double cx = imageWidth / 2.0;  // 960
@@ -43,8 +43,8 @@ int main()
     // 3. 无人机3D模型点（本体坐标系，单位：米）
     double x = 0.1;
     // 方案 2: ID1右上, 顺时针
-std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0), cv::Point3f(-x,x,0), cv::Point3f(x,x,0), cv::Point3f(x,-x,0)};
-    int m = 2;
+    std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0), cv::Point3f(-x,x,0), cv::Point3f(x,x,0), cv::Point3f(x,-x,0)};
+    int m = 3;
     int stateDim = 3 * (m + 1) + 1;
     int measureDim = 3; // l不测量
     double dt = 0.033;
@@ -52,15 +52,15 @@ std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0)
 
     // 初始状态和协方差
     cv::Mat Q = cv::Mat::eye(stateDim, stateDim, CV_64F) * 1;     // 过程噪声
-    Q.at<double>(stateDim - 1, stateDim - 1) = 1e-9;                 // 静态尺度没有过程噪声
+    Q.at<double>(stateDim - 1, stateDim - 1) = 1e1;                 // 静态尺度没有过程噪声
     cv::Mat R = cv::Mat::eye(measureDim, measureDim, CV_64F) * 1; // 测y量噪声
-    R.at<double>(0, 0) = 1e1;                                    // X 的测量噪声，给大一点（不信任）
-    R.at<double>(1, 1) = 1e1;                                      // Y 的测量噪声，给小一点（信任）
-    R.at<double>(2, 2) = 1e1;                                     // Z 的测量噪声，给最大（最不信任）
+    R.at<double>(0, 0) = 5*1e1;                                    // X 的测量噪声，给大一点（不信任）
+    R.at<double>(1, 1) = 5*1e1;                                      // Y 的测量噪声，给小一点（信任）
+    R.at<double>(2, 2) = 5*1e1;                                     // Z 的测量噪声，给最大（最不信任）
 
     Q.at<double>(0, 0) = 1e-4; // 位置x
     Q.at<double>(1, 1) = 1e-4; // 位置y
-    Q.at<double>(2, 2) = 1e-4; // 位置z
+    Q.at<double>(2, 2) = 1e-7; // 位置z
 
     Q.at<double>(3, 3) = 1e-3; // 速度x
     Q.at<double>(4, 4) = 1e-3; // 速度y3
@@ -76,9 +76,10 @@ std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0)
 
     // --- 新增：初始化状态向量和协方差矩阵 ---
     cv::Mat initialState = cv::Mat::zeros(stateDim, 1, CV_64F) * 1;
-    initialState.at<double>(stateDim - 1) = 1.3; // 尺度 l
+    initialState.at<double>(stateDim - 1) = 1.2; // 尺度 l
     cv::Mat initialCov = cv::Mat::eye(stateDim, stateDim, CV_64F) * 1;
-    initialCov.at<double>(2,2)=1e-5;
+    initialCov.at<double>(2,2)=1e2;
+    //initialCov.at<double>(stateDim-1,)=1e-;
     // 注意：此时 state_ 依然是空的，必须调用 init
     bool isInitialized = false;
     int flag = 1;
@@ -131,7 +132,7 @@ std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0)
         cv::Vec3d direction = targetPosWorld - camPos; // 方向向量
         double dist_pnp = cv::norm(direction);         // 计算模
         cv::Vec3d q_ln = direction;
-        //q_ln = direction / dist_pnp; // 归一化
+        q_ln = direction / dist_pnp; // 归一化
         
 
         // 计算特征尺度l
@@ -223,7 +224,7 @@ std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0)
         record["error"] = errorObj;
 
         nlohmann::json ll;
-        record["l"] = final_l;
+        record["l"] = final_l/dist_pnp;
         outfile << record.dump() << std::endl;
         preTime = status.record_time;
         flag++;
