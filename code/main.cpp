@@ -11,11 +11,11 @@ int main()
 
     std::cout << "和一位";
     // 1. 读取数据文件
-    auto statusData = DataReader::readStatusFile("/home/d1c/Git/Task/data_status_slow.jsonl");
+    auto statusData = DataReader::readStatusFile("../../data_status_slow.jsonl");
     std::cout << "Found " << statusData.size() << " status records" << std::endl;
-    auto cameraData = DataReader::readPoseFile("/home/d1c/Git/Task/data_tf_camera_slow.jsonl");
+    auto cameraData = DataReader::readPoseFile("../../data_tf_camera_slow.jsonl");
     std::cout << "Found " << cameraData.size() << " camera records" << std::endl;
-    auto uavData = DataReader::readPoseFile("/home/d1c/Git/Task/data_tf_uav_slow.jsonl");
+    auto uavData = DataReader::readPoseFile("../../data_tf_uav_slow.jsonl");
     std::cout << "Found " << uavData.size() << " uav records" << std::endl;
 
     std::ofstream outfile("/home/d1c/Git/Task/error.jsonl", std::ios::out | std::ios::trunc);
@@ -44,7 +44,7 @@ int main()
     double x = 0.5;
     // 方案 2: ID1右上, 顺时针
     std::vector<cv::Point3f> modelPoints = {cv::Point3f(0,0,0), cv::Point3f(-x,-x,0), cv::Point3f(-x,x,0), cv::Point3f(x,x,0), cv::Point3f(x,-x,0)};
-    int m = 3;
+    int m = 2;
     int stateDim = 3 * (m + 1) + 1;
     int measureDim = 3; // l不测量
     double dt = 0.033;
@@ -52,19 +52,19 @@ int main()
 
     // 初始状态和协方差
     cv::Mat Q = cv::Mat::eye(stateDim, stateDim, CV_64F) * 1;     // 过程噪声
-    Q.at<double>(stateDim - 1, stateDim - 1) = 1e1;               // 静态尺度没有过程噪声
+    Q.at<double>(stateDim - 1, stateDim - 1) = 0;               // 静态尺度没有过程噪声
     cv::Mat R = cv::Mat::eye(measureDim, measureDim, CV_64F) * 1; // 测y量噪声
     R.at<double>(0, 0) = 5*1e1;                                    // X 的测量噪声，给大一点（不信任）
     R.at<double>(1, 1) = 5*1e1;                                      // Y 的测量噪声，给小一点（信任）
     R.at<double>(2, 2) = 5*1e1;                                     // Z 的测量噪声，给最大（最不信任）
 
-    Q.at<double>(0, 0) = 1e-4; // 位置x
-    Q.at<double>(1, 1) = 1e-4; // 位置y
-    Q.at<double>(2, 2) = 1e-7; // 位置z
+    Q.at<double>(0, 0) = 0;//1e-4; // 位置x
+    Q.at<double>(1, 1) = 0;//1e-4; // 位置y
+    Q.at<double>(2, 2) = 0;//1e-7; // 位置z
 
-    Q.at<double>(3, 3) = 1e-3; // 速度x
-    Q.at<double>(4, 4) = 1e-3; // 速度y3
-    Q.at<double>(5, 5) = 1e-3; // 速度z
+    Q.at<double>(3, 3) = 0;//1e-3; // 速度x
+    Q.at<double>(4, 4) = 0;//1e-3; // 速度y3
+    Q.at<double>(5, 5) = 0;//1e-3; // 速度z
 
     Q.at<double>(6, 6) = 5 * 1e-2; // 加速度x
     Q.at<double>(7, 7) = 5 * 1e-2; // 加速度y
@@ -76,10 +76,10 @@ int main()
 
     // --- 新增：初始化状态向量和协方差矩阵 ---
     cv::Mat initialState = cv::Mat::zeros(stateDim, 1, CV_64F) * 1;
-    initialState.at<double>(stateDim - 1) = 1.2; // 尺度 l
+    initialState.at<double>(stateDim - 1) = 0.33; // 尺度 l
     cv::Mat initialCov = cv::Mat::eye(stateDim, stateDim, CV_64F) * 1;
     initialCov.at<double>(2,2)=1e2;
-    initialCov.at<double>(stateDim-1,stateDim-1)=1e2;
+    initialCov.at<double>(stateDim-1,stateDim-1)=2.5*1e2;
     // 注意：此时 state_ 依然是空的，必须调用 init
     bool isInitialized = false;
     int flag = 1;

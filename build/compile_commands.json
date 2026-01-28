@@ -1,31 +1,31 @@
 [
 {
   "directory": "/home/d1c/Git/Task/build",
-  "command": "/usr/bin/g++   -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/main.cpp.o -c /home/d1c/Git/Task/code/main.cpp",
+  "command": "/usr/bin/g++  -DPROJECT_DATA_DIR=\\\"/home/d1c/Git/Task/code\\\" -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/main.cpp.o -c /home/d1c/Git/Task/code/main.cpp",
   "file": "/home/d1c/Git/Task/code/main.cpp"
 },
 
 {
   "directory": "/home/d1c/Git/Task/build",
-  "command": "/usr/bin/g++   -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/PnPSolver.cpp.o -c /home/d1c/Git/Task/code/PnPSolver.cpp",
+  "command": "/usr/bin/g++  -DPROJECT_DATA_DIR=\\\"/home/d1c/Git/Task/code\\\" -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/PnPSolver.cpp.o -c /home/d1c/Git/Task/code/PnPSolver.cpp",
   "file": "/home/d1c/Git/Task/code/PnPSolver.cpp"
 },
 
 {
   "directory": "/home/d1c/Git/Task/build",
-  "command": "/usr/bin/g++   -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/DataReader.cpp.o -c /home/d1c/Git/Task/code/DataReader.cpp",
+  "command": "/usr/bin/g++  -DPROJECT_DATA_DIR=\\\"/home/d1c/Git/Task/code\\\" -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/DataReader.cpp.o -c /home/d1c/Git/Task/code/DataReader.cpp",
   "file": "/home/d1c/Git/Task/code/DataReader.cpp"
 },
 
 {
   "directory": "/home/d1c/Git/Task/build",
-  "command": "/usr/bin/g++   -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/KalmanFilter.cpp.o -c /home/d1c/Git/Task/code/KalmanFilter.cpp",
+  "command": "/usr/bin/g++  -DPROJECT_DATA_DIR=\\\"/home/d1c/Git/Task/code\\\" -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/KalmanFilter.cpp.o -c /home/d1c/Git/Task/code/KalmanFilter.cpp",
   "file": "/home/d1c/Git/Task/code/KalmanFilter.cpp"
 },
 
 {
   "directory": "/home/d1c/Git/Task/build",
-  "command": "/usr/bin/g++   -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/utils.cpp.o -c /home/d1c/Git/Task/code/utils.cpp",
+  "command": "/usr/bin/g++  -DPROJECT_DATA_DIR=\\\"/home/d1c/Git/Task/code\\\" -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3  -g   -std=gnu++17 -o code/CMakeFiles/uav_tracker.dir/utils.cpp.o -c /home/d1c/Git/Task/code/utils.cpp",
   "file": "/home/d1c/Git/Task/code/utils.cpp"
 }
 ]

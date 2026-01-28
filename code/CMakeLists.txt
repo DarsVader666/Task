@@ -8,6 +8,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+
 # 1. 寻找 OpenCV 库 (PnP 算法需要) 
 find_package(OpenCV REQUIRED)
 
@@ -20,6 +22,11 @@ find_package(nlohmann_json REQUIRED)
 
 # 添加可执行文件 (假设你的文件名是 test.cpp)
 add_executable(uav_tracker  main.cpp PnPSolver.cpp DataReader.cpp KalmanFilter.cpp utils.cpp )
+
+# 获取项目根目录（即CMakeLists.txt所在目录）的绝对路径
+get_filename_component(PROJECT_DATA_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
+# 将该路径作为一个预处理器宏传递给源代码
+target_compile_definitions(uav_tracker PRIVATE PROJECT_DATA_DIR="${PROJECT_DATA_DIR}")
 
 # 链接库和头文件
 target_link_libraries(uav_tracker

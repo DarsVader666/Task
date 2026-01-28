@@ -90,6 +90,7 @@ build code/edit_cache: phony code/CMakeFiles/edit_cache.util
 build cmake_object_order_depends_target_uav_tracker: phony || code/CMakeFiles/uav_tracker.dir
 
 build code/CMakeFiles/uav_tracker.dir/main.cpp.o: CXX_COMPILER__uav_tracker ../code/main.cpp || cmake_object_order_depends_target_uav_tracker
+  DEFINES = -DPROJECT_DATA_DIR=\"/home/d1c/Git/Task/code\"
   DEP_FILE = code/CMakeFiles/uav_tracker.dir/main.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3
@@ -97,6 +98,7 @@ build code/CMakeFiles/uav_tracker.dir/main.cpp.o: CXX_COMPILER__uav_tracker ../c
   OBJECT_FILE_DIR = code/CMakeFiles/uav_tracker.dir
 
 build code/CMakeFiles/uav_tracker.dir/PnPSolver.cpp.o: CXX_COMPILER__uav_tracker ../code/PnPSolver.cpp || cmake_object_order_depends_target_uav_tracker
+  DEFINES = -DPROJECT_DATA_DIR=\"/home/d1c/Git/Task/code\"
   DEP_FILE = code/CMakeFiles/uav_tracker.dir/PnPSolver.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3
@@ -104,6 +106,7 @@ build code/CMakeFiles/uav_tracker.dir/PnPSolver.cpp.o: CXX_COMPILER__uav_tracker
   OBJECT_FILE_DIR = code/CMakeFiles/uav_tracker.dir
 
 build code/CMakeFiles/uav_tracker.dir/DataReader.cpp.o: CXX_COMPILER__uav_tracker ../code/DataReader.cpp || cmake_object_order_depends_target_uav_tracker
+  DEFINES = -DPROJECT_DATA_DIR=\"/home/d1c/Git/Task/code\"
   DEP_FILE = code/CMakeFiles/uav_tracker.dir/DataReader.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3
@@ -111,6 +114,7 @@ build code/CMakeFiles/uav_tracker.dir/DataReader.cpp.o: CXX_COMPILER__uav_tracke
   OBJECT_FILE_DIR = code/CMakeFiles/uav_tracker.dir
 
 build code/CMakeFiles/uav_tracker.dir/KalmanFilter.cpp.o: CXX_COMPILER__uav_tracker ../code/KalmanFilter.cpp || cmake_object_order_depends_target_uav_tracker
+  DEFINES = -DPROJECT_DATA_DIR=\"/home/d1c/Git/Task/code\"
   DEP_FILE = code/CMakeFiles/uav_tracker.dir/KalmanFilter.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3
@@ -118,6 +122,7 @@ build code/CMakeFiles/uav_tracker.dir/KalmanFilter.cpp.o: CXX_COMPILER__uav_trac
   OBJECT_FILE_DIR = code/CMakeFiles/uav_tracker.dir
 
 build code/CMakeFiles/uav_tracker.dir/utils.cpp.o: CXX_COMPILER__uav_tracker ../code/utils.cpp || cmake_object_order_depends_target_uav_tracker
+  DEFINES = -DPROJECT_DATA_DIR=\"/home/d1c/Git/Task/code\"
   DEP_FILE = code/CMakeFiles/uav_tracker.dir/utils.cpp.o.d
   FLAGS = -g   -std=gnu++17
   INCLUDES = -I../code/include -isystem /usr/include/opencv4 -isystem /usr/local/include/eigen3
