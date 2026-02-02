@@ -2,7 +2,7 @@
 
 KalmanFilter::KalmanFilter(int stateDim, int measureDim, int m) : stateDim_(stateDim), measureDim_(measureDim), m_(m)
 {
-    transitionMatrix_ =cv ::Mat::eye(stateDim_,stateDim,CV_64F);
+    transitionMatrix_ =cv ::Mat::eye(stateDim_,stateDim_,CV_64F);
     initMeasurementMatrix();
 }
 
@@ -33,25 +33,7 @@ void KalmanFilter::updateTransitionMatrix(double dt)
     transitionMatrix_.at<double>(stateDim_ - 1, stateDim_ - 1) = 1.0;
 }
 
-/*void KalmanFilter::initTransitionMatrix()
-{
-    // 拿第一体的结果计算转移矩阵
-    transitionMatrix_ = cv::Mat::zeros(stateDim_, stateDim_, CV_64F);
 
-    for (int k = 0; k <= m_; k++)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = k; j <= m_; j++)
-            {
-                double coeff = pow(dt_, j - k) / tgamma(j - k + 1);         // tgamma(n)=(n-1)!
-                transitionMatrix_.at<double>(3 * k + i, 3 * j + i) = coeff; //+i即为构造对角线结构
-            }
-        }
-    }
-    // 静态特征尺度l，最右下角那个是1
-    transitionMatrix_.at<double>(stateDim_ - 1, stateDim_ - 1) = 1.0;
-}*/
 
 void KalmanFilter::initMeasurementMatrix() // 初始化观测矩阵
 {                                          // H_k=[I_3,0,...,-q_{ln}(k)]

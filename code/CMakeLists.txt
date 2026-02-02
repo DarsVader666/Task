@@ -17,7 +17,6 @@ find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 # 3. 寻找 nlohmann_json (解析 jsonl 文件需要) 
-# 如果你是通过 sudo apt install nlohmann-json3-dev 安装的，使用以下方式
 find_package(nlohmann_json REQUIRED)
 
 # 添加可执行文件 (假设你的文件名是 test.cpp)
